@@ -35,7 +35,7 @@ final class DeviceDataConsumer(deviceMonitorSupervisor: ActorRef) extends Actor 
   val config = context.system.settings.config.getConfig("akka.kafka.consumer")
   val consumerSettings =
     ConsumerSettings(config, new StringDeserializer, new StringDeserializer)
-      .withBootstrapServers("localhost:9092")
+      .withBootstrapServers("172.29.15.246:9092")
       .withGroupId("group1")
       .withProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
 

@@ -23,7 +23,7 @@ final class HeatAlertProducer extends Actor with ActorLogging{
 
   val config = context.system.settings.config.getConfig("akka.kafka.producer")
   val producerSettings = ProducerSettings(config, new StringSerializer, new StringSerializer)
-    .withBootstrapServers("")
+    .withBootstrapServers("172.29.15.246:9092")
 
   override def receive: Receive = {
     case heat:Heat =>
