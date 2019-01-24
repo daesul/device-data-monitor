@@ -32,7 +32,6 @@ final class DeviceDataParser extends Actor with ActorLogging {
           sender() ! DeviceData(deviceId, temperature, rpm, timestamp)
       }
 
-     // sender() ! DeviceData()
   }
 }
 

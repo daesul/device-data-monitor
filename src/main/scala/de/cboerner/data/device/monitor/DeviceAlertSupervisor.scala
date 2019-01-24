@@ -14,11 +14,12 @@ object DeviceAlertSupervisor {
 
   sealed trait Alert {
     def producerId: Int
+    def timestamp: Long
   }
 
-  final case class Heat(producerId: Int, heat: Double) extends Alert
+  final case class Heat(producerId: Int, heat: Double, timestamp: Long) extends Alert
 
-  final case class Rpm(producerId: Int, rpm: Int) extends Alert
+  final case class Rpm(producerId: Int, rpm: Int, timestamp: Long) extends Alert
 
 }
 

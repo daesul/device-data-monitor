@@ -51,12 +51,12 @@ final class DeviceMonitor(deviceAlertProducer: ActorRef) extends Actor with Acto
       state = state + dataRecord
       if (state.overheated) {
         log.info("Creating heat alert for: {}", dataRecord.deviceId)
-        deviceAlertProducer ! Heat(dataRecord.deviceId, dataRecord.temperature)
+        deviceAlertProducer ! Heat(dataRecord.deviceId, dataRecord.temperature, Instant.now().toEpochMilli)
       }
 
       if (state.rotationCritical) {
         log.info("Creating rpm alert for: {}", dataRecord.deviceId)
-        deviceAlertProducer ! Rpm(dataRecord.deviceId, dataRecord.rpm)
+        deviceAlertProducer ! Rpm(dataRecord.deviceId, dataRecord.rpm,  Instant.now().toEpochMilli)
       }
     case Reset => state = State()
   }
